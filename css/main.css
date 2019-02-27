@@ -22,26 +22,48 @@ nav a {
     margin: 5px;
 }
 
-                            /* EMAIL PREVIEW  */
+/* LEFT NAV     */
+
+.left-bar {
+    min-width: 150px;
+}
+
+/* EMAIL LIST     */
+
+.email-list {
+    flex-grow: 1;
+}
+
+/* EMAIL PREVIEW  */
+
 /*email container*/
+
 .email-preview {
-    border-bottom: 1px solid gray;
-    margin:10px;
+    margin: 20px;
+    padding-bottom: 10px;
     cursor: pointer;
+    border-bottom: 1px solid gray;
 }
 
 /*subject*/
+
 .email-preview h3 {
     font-size: 18px;
     margin: 0;
 }
+.email-subject{
+    margin-left:25px;
+}
 /*sender name*/
+
 .email-preview h4 {
     font-size: 12px;
     font-weight: 700;
     margin: 0;
 }
+
 /*sender email*/
+
 .email-preview h4 span {
     font-size: 12px;
     margin-left: 15px;
@@ -49,6 +71,7 @@ nav a {
 }
 
 /*email body*/
+
 .email-preview p {
     font-size: 12px;
     margin-left: 15px;

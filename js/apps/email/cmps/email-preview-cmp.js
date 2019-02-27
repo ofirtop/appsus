@@ -5,8 +5,10 @@ export default {
         <section class="email-preview">
             
             <div class="flex space-between" v-on:click="onSelected" v-if="!selected" >
-                <div>{{email.from}}</div>
-                <div>{{email.subject}}</div>
+                <div class=" flex">
+                    <div>{{email.from}}</div>
+                    <div class="email-subject">{{email.subject}}</div>
+                </div>
                 <div>{{timeRecieved}}</div>
             </div>    
             <div v-else v-on:click="onSelected">
