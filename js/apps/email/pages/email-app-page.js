@@ -27,6 +27,7 @@ export default {
     },
     created(){
         this.emails = emailService.loadEmails();
+        this.$router.push('/inbox');
         console.log('email app got emails: ',this.emails);
         
         
