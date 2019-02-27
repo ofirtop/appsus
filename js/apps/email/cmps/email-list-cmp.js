@@ -11,5 +11,9 @@ export default {
     components:{
         emailPreview
     },
+    created(){
+        console.log('emailList created, emails are:',this.emails)
+
+    },
     name:'email-list'
 }

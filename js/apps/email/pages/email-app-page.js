@@ -3,8 +3,17 @@ import emailService from '../services/email-service-cmp.js';
 
 export default {
     template: `
-        <section class="email-app">
-            <email-list :emails="emails"></email-list>
+        <section class="email-app flex">
+            <div>
+                <div>
+                    <router-link to="/compose">Compose</router-link>
+                </div>
+                <div>
+                    <router-link to="/inbox">Inbox</router-link>
+                </div>
+            </div>
+            <!-- <email-list :emails="emails"></email-list> -->
+            <router-view :emails="emails"></router-view>
         </section> 
     `,
     data(){

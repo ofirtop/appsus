@@ -27,6 +27,7 @@ nav a {
 .email-preview {
     border-bottom: 1px solid gray;
     margin:10px;
+    cursor: pointer;
 }
 
 /*subject*/
