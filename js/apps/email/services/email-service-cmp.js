@@ -1,5 +1,4 @@
-import utilService from '../../../services/utils-service.js';
-import utilsService from '../../../services/utils-service.js';
+import utilService from '../../../services/util-service.js';
 
 export default {
     loadEmails
