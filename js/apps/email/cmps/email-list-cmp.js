@@ -3,7 +3,7 @@ export default {
     props:['emails'],
     template:`
             <section>
-                <email-preview></email-preview>
+                <email-preview v-for="email in emails"></email-preview>
                 <pre>{{emails}}</pre>
             </section>
     `,
