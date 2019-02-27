@@ -16,6 +16,7 @@ function loadEmails() {
         for (let index = 0; index < 6; index++) {
             emails.push(_createEmail());
         }
+        utilService.saveToStorage(EMAIL_LIST_KEY,emails);
     }
     return emails;
 }
@@ -27,7 +28,9 @@ function _createEmail() {
         body: 'lorem skjdhf klsj ldkjl dlvkjldfkbvkdjvl kjf lsjd lbxv kbxjzvhdbslv dbslv jhbxv dbxzjlabsdjbvhsjlbvhjladsbvldsjbv sjDBvlxhjzbcvjl ablrkj;bgfds:KJB CVAWJsjzvx.cnb dbvx db',
         isRead: false,
         sendAt: Date.now(),
-        From: 'Ofir',
-        To: 'Hagar'
+        from: 'Ofir',
+        fromEmail:'ofir@gmail.com', 
+        to: 'Hagar',
+        toEmail:'hagar@gmail.com'
     }
 }

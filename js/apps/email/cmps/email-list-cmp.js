@@ -4,9 +4,8 @@ export default {
     template:`
             <section>
                 <email-preview v-for="currEmail in emails" 
-                :key="email.id"
+                :key="currEmail.id"
                 :email="currEmail"></email-preview>
-                <pre>{{emails}}</pre>
             </section>
     `,
     components:{

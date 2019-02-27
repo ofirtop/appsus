@@ -1,19 +1,54 @@
-.app{
-    min-height:100vh ;
+.app {
+    min-height: 100vh;
 }
+
 .main-container {
     flex-grow: 1;
 }
-footer{
+
+footer {
     background-color: #999;
 }
-nav{
+
+nav {
     margin-bottom: 5px;
 }
-nav a{
+
+nav a {
     background-color: rgba(255, 0, 212, 0.75);
-    color:white;
+    color: white;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
+}
+
+                            /* EMAIL PREVIEW  */
+/*email container*/
+.email-preview {
+    border-bottom: 1px solid gray;
+    margin:10px;
+}
+
+/*subject*/
+.email-preview h3 {
+    font-size: 18px;
+    margin: 0;
+}
+/*sender name*/
+.email-preview h4 {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0;
+}
+/*sender email*/
+.email-preview h4 span {
+    font-size: 12px;
+    margin-left: 15px;
+    color: gray;
+}
+
+/*email body*/
+.email-preview p {
+    font-size: 12px;
+    margin-left: 15px;
 }
