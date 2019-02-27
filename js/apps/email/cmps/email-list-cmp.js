@@ -3,7 +3,9 @@ export default {
     props:['emails'],
     template:`
             <section>
-                <email-preview v-for="email in emails" :key="email.id"></email-preview>
+                <email-preview v-for="currEmail in emails" 
+                :key="email.id"
+                :email="currEmail"></email-preview>
                 <pre>{{emails}}</pre>
             </section>
     `,
