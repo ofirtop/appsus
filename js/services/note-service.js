@@ -31,7 +31,7 @@ function createNote(type, noteData) {
         type: type,
         txt: noteData.txt,
         url: noteData.url,
-        txtList: noteData.txts,
+        txtList: noteData.txtList,
         pinned: false
     };
 }

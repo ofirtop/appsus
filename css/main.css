@@ -1,6 +1,12 @@
 .app{
-    height:100vh ;
+    min-height:100vh ;
 }
 .main-container {
     flex-grow: 1;
+}
+footer{
+    background-color: #999;
+}
+nav{
+    background-color: antiquewhite;
 }
