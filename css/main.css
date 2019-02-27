@@ -1,0 +1,6 @@
+.app{
+    height:100vh ;
+}
+.main-container {
+    flex-grow: 1;
+}
