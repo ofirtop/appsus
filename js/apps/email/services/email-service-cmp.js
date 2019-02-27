@@ -9,7 +9,7 @@ const EMAIL_LIST_KEY = 'emailList';
 const ID_LENGTH = 5;
 
 function loadEmails() {
-    var emails = utilsService.loadFromStorage(EMAIL_LIST_KEY);
+    var emails = utilService.loadFromStorage(EMAIL_LIST_KEY);
 
     if (!emails || emails.length === 0) {
         emails = [];
