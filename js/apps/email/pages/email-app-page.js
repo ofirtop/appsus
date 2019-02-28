@@ -6,10 +6,10 @@ export default {
         <section class="email-app flex">
             <div class="left-bar">
                 <div>
-                    <router-link to="/compose">Compose</router-link>
+                    <router-link to="/emails/compose">Compose</router-link>
                 </div>
                 <div>
-                    <router-link to="/inbox">Inbox</router-link>
+                    <router-link to="/emails">Inbox</router-link>
                 </div>
             </div>
             <!-- email-list and compose-email will be rendered here -->
@@ -27,7 +27,7 @@ export default {
     },
     created(){
         this.emails = emailService.loadEmails();
-        this.$router.push('/inbox');
+        // this.$router.push('/emails/inbox');
         console.log('email app got emails: ',this.emails);
         
         

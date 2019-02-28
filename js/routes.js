@@ -7,8 +7,8 @@ import emailCompose from '../js/apps/email/cmps/email-compose-cmp.js';
 const routes = [
     { path: '/', component: appsusHome },
     { path: '/emails', component: emailApp, children: [
-            { path: '/inbox', component: emailList },
-            { path: '/compose', component: emailCompose }
+            { path: '', component: emailList },
+            { path: 'compose', component: emailCompose }
         ]
     },
     { path: '/notes', component: noteApp },
