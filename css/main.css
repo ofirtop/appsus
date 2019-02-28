@@ -35,6 +35,10 @@ nav a {
     flex-grow: 1;
 }
 
+.filter-text {
+    margin-left: 20px;
+}
+
 /* EMAIL PREVIEW  */
 
 /*email container*/
@@ -98,3 +102,16 @@ nav a {
 /* EMAIL DETAILS  */
 
 .email-details {}
+
+/* Appsus Home  */
+
+.appsus-home {
+    text-align: center;
+    font-size: 28px;
+}
+
+.appsus-home img {
+    margin-top: 50px;
+    width: 100px;
+    height: 100px;
+}

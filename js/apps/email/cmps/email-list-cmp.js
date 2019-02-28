@@ -4,7 +4,7 @@ import emailService from '../services/email-service-cmp.js';
 export default {
     template: `
             <section class="email-list" >
-                <input type=text placeholder="filter by text" 
+                <input type=text placeholder="filter by text" class="filter-text"
                        v-model="filterBy.text" @input="setFilter">
                 <email-preview 
                     v-for="currEmail in emailToShow" 
