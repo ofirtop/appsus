@@ -2,7 +2,7 @@ import utilService from '../../../services/util-service.js';
 
 export default {
     loadEmails,
-    getReadEmailsCounter,
+    getUnReadEmailsCounter,
     saveEmails,
     SendMail,
     getEmailById
@@ -23,12 +23,14 @@ function loadEmails() {
         }
         utilService.saveToStorage(EMAIL_LIST_KEY, emails);
     }
-
-
-    return emails;
+    return emails.sort((a, b) => {
+        a = new Date(a.sendAt);
+        b = new Date(b.sendAt);
+        return a > b ? -1 : a < b ? 1 : 0;
+    });
 }
-function saveEmails() {
 
+function saveEmails() {
     utilService.saveToStorage(EMAIL_LIST_KEY, emails);
     console.log('emailService, emails saved')
 }
@@ -47,15 +49,15 @@ function _createEmail() {
     }
 }
 
-function getReadEmailsCounter() {
+function getUnReadEmailsCounter() {
 
-    var readCounter = 0;
+    var unReadCounter = 0;
     if (!emails || emails.length === 0) return 0;
 
     emails.forEach(email => {
-        if (email.isRead) readCounter++
+        if (!email.isRead) unReadCounter++
     });
-    return readCounter;
+    return unReadCounter;
 }
 
 function SendMail(email) {
@@ -64,7 +66,7 @@ function SendMail(email) {
 
     // setTimeout(() => {
     if (!email) return;
-
+    email.id = gNextId++
     emails.push(email);
     utilService.saveToStorage(EMAIL_LIST_KEY, emails);
     console.log('email added to emails. email:', email)
@@ -72,7 +74,7 @@ function SendMail(email) {
 }
 
 function getEmailById(id) {
-    return emails.find(email => {return email.id === id });
+    return emails.find(email => { return email.id === id });
 }
 
 

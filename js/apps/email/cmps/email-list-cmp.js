@@ -8,7 +8,7 @@ export default {
                     v-for="currEmail in emails" 
                     :key="currEmail.id"
                     :email="currEmail"
-                    @saveReq="onSaveRequest"></email-preview>
+                    @mailread="onMailRead"></email-preview>
             </section>
     `,
     data() {
@@ -20,14 +20,14 @@ export default {
         emailPreview
     },
     methods:{
-        onSaveRequest(){
+        onMailRead(){
             emailService.saveEmails();
         }
     },
     created() {
         this.emails = emailService.loadEmails();
         console.log('email-list created emails:',this.emails);
-        var counter = emailService.getReadEmailsCounter();
+        var counter = emailService.getUnReadEmailsCounter();
         this.$emit('readEmailsCounter',counter);        
     },
     name: 'email-list'

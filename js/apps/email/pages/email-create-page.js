@@ -21,6 +21,7 @@ export default {
     data() {
         return {
             email: {
+                id:null,
                 subject: '',
                 body: '',
                 isRead: false,

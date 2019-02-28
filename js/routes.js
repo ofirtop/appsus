@@ -9,7 +9,7 @@ const routes = [
     { path: '/', component: appsusHome },
     { path: '/emails', component: emailApp, children: [
             { path: '', component: emailList },
-            { path: 'compose', component: emailCreate },
+            { path: 'compose/:id?', component: emailCreate },
             { path: 'details/:id',component: emailDetails}
         ]
     },

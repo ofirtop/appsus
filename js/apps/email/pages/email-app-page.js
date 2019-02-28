@@ -34,7 +34,7 @@ export default {
         //register to read email notification
         eventBus.$on(EVENT_EMAIL_READ, () => {
             console.log('emailApp received readEmailCounter increase request',this.emailReadCounter)
-             this.emailReadCounter++ 
+             this.emailReadCounter-- 
             });
 
     },

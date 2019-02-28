@@ -32,18 +32,16 @@ export default {
         }
     },
     methods: {
-        // pad(n) {
-        //     return n < 10 ? '0' + n : n;
-        // },
         onSelected() {
             this.selected = !this.selected;
             //if email read send event to the event bus
             console.log('emiting read event to emailApp')
             if (!this.email.isRead) setTimeout(() => { eventBus.$emit(EVENT_EMAIL_READ) }, 2000)
             this.email.isRead = true;
-            this.$emit('saveReq');
+            this.$emit('mailread');
         },
         DetailedView() {
+            debugger
             var strRout = `emails/details/${this.email.id}`;
             console.log('about to move to detailed view',strRout);
             this.$router.push(strRout);
@@ -52,11 +50,6 @@ export default {
     computed: {
         timeRecieved() {
             return utilService.formatTime(this.email.sendAt);
-            // debugger
-            // var h = new Date(this.email.sendAt).getHours();
-            // h += 2; //offset
-            // var m = new Date(this.email.sendAt).getMinutes();
-            // return this.pad(h) + ':' + this.pad(m);
         }
     },
     created() {

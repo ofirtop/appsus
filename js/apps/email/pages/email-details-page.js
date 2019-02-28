@@ -9,7 +9,7 @@ export default {
                 <div>{{timeRecieved}}</div>
             </div>
             <div class="flex ">
-                <div>{{email.from}} </div>
+                <div>{{email.from}} :</div>
                 <div>{{email.fromEmail}}</div>
             </div>
             <p>{{email.body}}</p>
