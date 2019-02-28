@@ -7,7 +7,7 @@ export default {
     template: `
         <section class="email-preview">
             
-            <div class="flex space-between" v-on:click="onSelected" v-if="!selected" >
+            <div class="flex space-between" :class="{bold: !email.isRead}" v-on:click="onSelected" v-if="!selected" >
                 <div class=" flex">
                     <div>{{email.from}}</div>
                     <div class="email-subject">{{email.subject}}</div>
@@ -26,6 +26,7 @@ export default {
                 <button v-on:click="detailed">Deatails</button>
                 <button v-on:click="reply">Reply</button>
                 <button v-on:click="deleteEmail">Delete</button>
+                <button v-on:click="setReadState" >{{readState}}</button>
             </div>
         </section>
     `,
@@ -39,31 +40,38 @@ export default {
             this.selected = !this.selected;
             //if email read send event to the event bus
             console.log('emiting read event to emailApp')
-            if (!this.email.isRead) setTimeout(() => { eventBus.$emit(EVENT_EMAIL_READ) }, 2000)
+            if (!this.email.isRead) setTimeout(() => { eventBus.$emit(EVENT_EMAIL_READ,true) }, 2000)
             this.email.isRead = true;
             this.$emit('mailread');
         },
         detailed() {
             var strRout = `emails/details/${this.email.id}`;
-            console.log('about to move to detailed view',strRout);
+            console.log('about to move to detailed view', strRout);
             this.$router.push(strRout);
         },
-        reply(){
+        reply() {
             var strRout = `/emails/compose/${this.email.id}`;
-            console.log('about to move to detailed view',strRout);
+            console.log('about to move to detailed view', strRout);
             this.$router.push(strRout);
         },
-        deleteEmail(){
+        deleteEmail() {
             emailService.deleteEmail(this.email.id);
             var strRout = `/emails`;
             this.$router.push(strRout);
-            console.log('about to move to detailed view',strRout);
-
+        },
+        setReadState() {
+            this.email.isRead = !this.email.isRead;
+            eventBus.$emit(EVENT_EMAIL_READ,this.email.isRead);
+            emailService.saveEmails();
         }
     },
     computed: {
         timeRecieved() {
             return utilService.formatTime(this.email.sendAt);
+        },
+        readState() {
+            if (this.email.isRead) return 'Mark as UnRead';
+            return 'Mark as Read';
         }
     },
     created() {

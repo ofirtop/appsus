@@ -28,7 +28,7 @@ export default {
         this.emails = emailService.loadEmails();
         console.log('email-list created emails:',this.emails);
         var counter = emailService.getUnReadEmailsCounter();
-        this.$emit('readEmailsCounter',counter);        
+        this.$emit('UnreadEmailsCounter',counter);        
     },
     name: 'email-list'
 }

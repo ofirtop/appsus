@@ -78,6 +78,7 @@ function deleteEmail(id){
         debugger
         var idx = emails.findIndex(email =>{return email.id === id});
         emails.splice(idx,1);
+        utilService.saveToStorage(EMAIL_LIST_KEY, emails);
     }
 }
 function getEmailById(id) {

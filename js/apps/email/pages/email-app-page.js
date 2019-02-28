@@ -12,7 +12,7 @@ export default {
                 </div>
             </div>
             <!-- email-list and compose-email will be rendered here -->
-            <router-view @readEmailsCounter="setReadEmailcounter"></router-view>
+            <router-view @UnreadEmailsCounter="setUnreadEmailcounter"></router-view>
         </section> 
     `,
     data() {
@@ -22,7 +22,9 @@ export default {
         }
     },
     methods: {
-        setReadEmailcounter(counter) {
+    /*  Update Unread Email Counter
+        this function is called one time, on the creation of the email list.  */
+        setUnreadEmailcounter(counter) {
             console.log('counter received from email-list after email load. counter: ',counter)
             this.emailReadCounter = counter;
         }
@@ -32,10 +34,10 @@ export default {
     created() {
         console.log('email app got emails: ', this.emails);
         //register to read email notification
-        eventBus.$on(EVENT_EMAIL_READ, () => {
-            console.log('emailApp received readEmailCounter increase request',this.emailReadCounter)
-             this.emailReadCounter-- 
-            });
+        eventBus.$on(EVENT_EMAIL_READ, (isRead) => {
+            console.log('emailApp received readEmailCounter increase request', this.emailReadCounter)
+            this.emailReadCounter += isRead ? -1 : 1;
+        });
 
     },
     name: 'email-app'
