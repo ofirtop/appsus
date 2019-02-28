@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             email: {
-                id:null,
+                id: null,
                 subject: '',
                 body: '',
                 isRead: false,
@@ -35,11 +35,18 @@ export default {
     },
     methods: {
         sendEmail() {
-            console.log('about to send email',this.email);
+            console.log('about to send email', this.email);
             emailService.SendMail(this.email);
             console.log(this);
             this.$router.push('/emails');
         }
+    },
+    created() {
+        if (this.$route.params.id) {
+            var email = emailService.getEmailById(+this.$route.params.id);
+            this.email.subject = `Re: ${email.subject}`;
+        }
+
     },
     name: 'email-create'
 }

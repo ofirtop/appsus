@@ -13,23 +13,37 @@ export default {
                 <div>{{email.fromEmail}}</div>
             </div>
             <p>{{email.body}}</p>
+            <div class="handlers">
+                <button v-on:click="reply">Reply</button>
+                <button v-on:click="deleteEmail">Delete</button>
+            </div>
         </section>
     `,
-    data(){
+    data() {
         return {
-            email :null
+            email: null
         }
     },
-    methods:{
-        
+    methods: {
+        deleteEmail() {
+            emailService.deleteEmail(this.email.id);
+            var strRout = `/emails`;
+            this.$router.push(strRout);
+        },
+        reply() {
+            var strRout = `/emails/compose/${this.email.id}`;
+            console.log('about to move to detailed view', strRout);
+            this.$router.push(strRout);
+        }
+
     },
-    computed:{
+    computed: {
         timeRecieved() {
             return utilService.formatTime(this.email.sendAt);
         }
     },
-    created(){
+    created() {
         this.email = emailService.getEmailById(+this.$route.params.id);
     },
-    name:'email-details'
+    name: 'email-details'
 }

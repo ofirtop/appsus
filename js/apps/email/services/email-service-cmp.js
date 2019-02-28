@@ -5,7 +5,8 @@ export default {
     getUnReadEmailsCounter,
     saveEmails,
     SendMail,
-    getEmailById
+    getEmailById,
+    deleteEmail
 }
 var gNextId = 1;
 
@@ -72,7 +73,13 @@ function SendMail(email) {
     console.log('email added to emails. email:', email)
     // }, 1500);
 }
-
+function deleteEmail(id){
+    if(id){
+        debugger
+        var idx = emails.findIndex(email =>{return email.id === id});
+        emails.splice(idx,1);
+    }
+}
 function getEmailById(id) {
     return emails.find(email => { return email.id === id });
 }

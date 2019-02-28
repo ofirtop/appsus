@@ -1,3 +1,4 @@
+import emailService from '../services/email-service-cmp.js';
 import { eventBus, EVENT_EMAIL_READ } from '../../../event-bus.js';
 import utilService from '../../../services/util-service.js';
 
@@ -22,7 +23,9 @@ export default {
                 <p>{{email.body}}</p>
             </div>
             <div class="handlers">
-                <button v-on:click="DetailedView">Deatails</button>
+                <button v-on:click="detailed">Deatails</button>
+                <button v-on:click="reply">Reply</button>
+                <button v-on:click="deleteEmail">Delete</button>
             </div>
         </section>
     `,
@@ -40,11 +43,22 @@ export default {
             this.email.isRead = true;
             this.$emit('mailread');
         },
-        DetailedView() {
-            debugger
+        detailed() {
             var strRout = `emails/details/${this.email.id}`;
             console.log('about to move to detailed view',strRout);
             this.$router.push(strRout);
+        },
+        reply(){
+            var strRout = `/emails/compose/${this.email.id}`;
+            console.log('about to move to detailed view',strRout);
+            this.$router.push(strRout);
+        },
+        deleteEmail(){
+            emailService.deleteEmail(this.email.id);
+            var strRout = `/emails`;
+            this.$router.push(strRout);
+            console.log('about to move to detailed view',strRout);
+
         }
     },
     computed: {
