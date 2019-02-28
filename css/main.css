@@ -11,7 +11,8 @@ footer {
 }
 
 nav {
-    margin-bottom: 5px;
+    margin-bottom: 25px;
+    background-color: orange;
 }
 
 nav a {
@@ -44,9 +45,11 @@ nav a {
     cursor: pointer;
     border-bottom: 1px solid gray;
 }
-.email-preview .bold{
+
+.email-preview .bold {
     font-weight: bold;
 }
+
 /*subject*/
 
 .email-preview h3 {
@@ -89,10 +92,9 @@ nav a {
 
 .email-create-header {
     background-color: gray;
-    color:white;
+    color: white;
 }
 
 /* EMAIL DETAILS  */
-.email-details{
 
-}
+.email-details {}
