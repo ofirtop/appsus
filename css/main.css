@@ -51,9 +51,11 @@ nav a {
     font-size: 18px;
     margin: 0;
 }
-.email-subject{
-    margin-left:25px;
+
+.email-subject {
+    margin-left: 25px;
 }
+
 /*sender name*/
 
 .email-preview h4 {
@@ -75,4 +77,20 @@ nav a {
 .email-preview p {
     font-size: 12px;
     margin-left: 15px;
+}
+
+/* EMAIL CREATE  */
+
+.email-create {
+    flex-grow: 1;
+}
+
+.email-create-header {
+    background-color: gray;
+    color:white;
+}
+
+/* EMAIL DETAILS  */
+.email-details{
+    
 }

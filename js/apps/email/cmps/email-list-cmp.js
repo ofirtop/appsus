@@ -1,19 +1,34 @@
 import emailPreview from '../cmps/email-preview-cmp.js'
+import emailService from '../services/email-service-cmp.js';
+
 export default {
-    props:['emails'],
-    template:`
-            <section class="email-list">
-                <email-preview v-for="currEmail in emails" 
-                :key="currEmail.id"
-                :email="currEmail"></email-preview>
+    template: `
+            <section class="email-list" >
+                <email-preview 
+                    v-for="currEmail in emails" 
+                    :key="currEmail.id"
+                    :email="currEmail"
+                    @saveReq="onSaveRequest"></email-preview>
             </section>
     `,
-    components:{
+    data() {
+        return {
+            emails: null
+        }
+    },
+    components: {
         emailPreview
     },
-    created(){
-        console.log('emailList created, emails are:',this.emails)
-
+    methods:{
+        onSaveRequest(){
+            emailService.saveEmails();
+        }
     },
-    name:'email-list'
+    created() {
+        this.emails = emailService.loadEmails();
+        console.log('email-list created emails:',this.emails);
+        var counter = emailService.getReadEmailsCounter();
+        this.$emit('readEmailsCounter',counter);        
+    },
+    name: 'email-list'
 }

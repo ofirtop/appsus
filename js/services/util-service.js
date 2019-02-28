@@ -3,7 +3,8 @@ export default {
     getRandomIntInclusive,
     makeId,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    formatTime
 }
 
 function getRandomIntInclusive(min, max) {
@@ -33,4 +34,15 @@ function loadFromStorage(key) {
     var str = localStorage.getItem(key);
     if (!str) return undefined;
     return JSON.parse(str);
+}
+
+function formatTime(time){
+    var h = new Date(time).getHours();
+    h += 2; //offset
+    var m = new Date(time).getMinutes();
+    return _pad(h) + ':' + _pad(m);
+
+}
+function _pad(n) {
+    return n < 10 ? '0' + n : n;
 }
