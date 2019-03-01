@@ -37,11 +37,14 @@ function loadFromStorage(key) {
 }
 
 function formatTime(time){
-    var h = new Date(time).getHours();
-    h += 2; //offset
-    var m = new Date(time).getMinutes();
-    return _pad(h) + ':' + _pad(m);
-
+    var hour = new Date(time).getHours();
+    //hour += 2; //offset
+    var minute = new Date(time).getMinutes();
+    var seconds = new Date(time).getSeconds();
+    var day = new Date(time).getDate();
+    var month = new Date(time).getMonth() + 1;
+    var year = new Date(time).getFullYear();
+    return day + '/' + month + '/' + year + '  ' + _pad(hour) + ':' + _pad(minute) + ':' + _pad(seconds);
 }
 function _pad(n) {
     return n < 10 ? '0' + n : n;

@@ -40,7 +40,7 @@ export default {
             this.selected = !this.selected;
             //if email read send event to the event bus
             console.log('emiting read event to emailApp')
-            if (!this.email.isRead) setTimeout(() => { eventBus.$emit(EVENT_EMAIL_READ,true) }, 2000)
+            if (!this.email.isRead) setTimeout(() => { eventBus.$emit(EVENT_EMAIL_READ) }, 2000)
             this.email.isRead = true;
             this.$emit('mailread');
         },
@@ -61,7 +61,7 @@ export default {
         },
         setReadState() {
             this.email.isRead = !this.email.isRead;
-            eventBus.$emit(EVENT_EMAIL_READ,this.email.isRead);
+            eventBus.$emit(EVENT_EMAIL_READ);
             emailService.saveEmails();
         }
     },

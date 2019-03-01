@@ -1,4 +1,5 @@
 import { eventBus, EVENT_EMAIL_READ } from '../../../event-bus.js';
+import emailService from '../services/email-service-cmp.js';
 
 export default {
     template: `
@@ -34,9 +35,8 @@ export default {
     created() {
         console.log('email app got emails: ', this.emails);
         //register to read email notification
-        eventBus.$on(EVENT_EMAIL_READ, (isRead) => {
-            console.log('emailApp received readEmailCounter increase request', this.emailReadCounter)
-            this.emailReadCounter += isRead ? -1 : 1;
+        eventBus.$on(EVENT_EMAIL_READ, () => {
+            this.emailReadCounter = emailService.getUnReadEmailsCounter();
         });
 
     },

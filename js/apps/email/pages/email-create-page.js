@@ -43,7 +43,7 @@ export default {
     },
     created() {
         if (this.$route.params.id) {
-            var email = emailService.getEmailById(+this.$route.params.id);
+            var email = emailService.getEmailById(this.$route.params.id);
             this.email.subject = `Re: ${email.subject}`;
         }
 

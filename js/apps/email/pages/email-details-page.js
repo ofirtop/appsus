@@ -43,7 +43,7 @@ export default {
         }
     },
     created() {
-        this.email = emailService.getEmailById(+this.$route.params.id);
+        this.email = emailService.getEmailById(this.$route.params.id);
     },
     name: 'email-details'
 }
