@@ -17,13 +17,15 @@
     font-size: 60px;
     text-shadow: 4px 4px 4px #aaa;
 }
-.appsus-home div{
-    margin:0;
+
+.appsus-home div {
+    margin: 0;
 }
+
 .appsus-home img {
     margin-top: 50px;
     height: 70vh;
-    margin:0;
+    margin: 0;
 }
 
 .main-container {
@@ -115,7 +117,7 @@ nav a {
 /* EMAIL CREATE  */
 
 .email-create {
-    flex-grow: 1;
+    flex-grow: 1
 }
 
 .email-create-header {
@@ -123,7 +125,29 @@ nav a {
     color: white;
 }
 
+.email-to {
+    margin-top: 5px;
+}
+
+.email-to input {
+    flex-grow: 1;
+    border: 0px solid transparent;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-left: 15px;
+}
+
+.email-create .subject {
+    display: inline-block;
+    margin-top:5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.email-create textarea{
+    width:100%;
+    margin-top:5px;
+    height:60vh;
+}
 /* EMAIL DETAILS  */
 
 .email-details {}
-

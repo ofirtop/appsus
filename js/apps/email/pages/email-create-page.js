@@ -4,12 +4,11 @@ export default {
         <section class="email-create flex-col">
             <form @submit.prevent="sendEmail">
                 <div class="email-create-header">New Message</div>
-                <div>
-                    <span>To</span>
-                    <input type="text" :value="email.to">
-                        
+                <div class="email-to flex">
+                    <span>To: </span>
+                    <input type="text" :value="email.to">                        
                 </div>
-                <input type="text" placeholder="Subject:" v-model="email.subject">
+                <input class="subject" type="text" placeholder="Subject:" v-model="email.subject">
                 <textarea v-model.trim="email.body"></textarea>
                 <button type="submit">Send</button>
             </form>
@@ -35,9 +34,7 @@ export default {
     },
     methods: {
         sendEmail() {
-            console.log('about to send email', this.email);
             emailService.SendMail(this.email);
-            console.log(this);
             this.$router.push('/emails');
         }
     },
