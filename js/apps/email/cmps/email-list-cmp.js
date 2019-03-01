@@ -34,8 +34,20 @@ export default {
     },
     computed: {
         emailToShow() {
-            console.log('filter.text: ',this.filterBy.text)
-            if (this.filterBy.text === '') return this.emails;
+         
+            var counter = emailService.getUnReadEmailsCounter();
+            this.$emit('UnreadEmailsCounter', counter);
+            
+            if (!this.emails) return this.email;
+
+            console.log('filter.text: ', this.filterBy.text )
+            var sortedMails = this.emails.sort((a, b) => {
+                a = new Date(a.sendAt);
+                b = new Date(b.sendAt);
+                return a > b ? -1 : a < b ? 1 : 0;
+            });
+
+            if (this.filterBy.text === '') return sortedMails;
             else {
                 return this.emails.filter(email => {
                     return email.subject.toLowerCase().includes(this.filterBy.text.toLowerCase());
