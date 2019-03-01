@@ -1,5 +1,29 @@
+@font-face {
+    font-family: "Tangerine-Regular";
+    src: url("/fonts/Tangerine/Tangerine-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 .app {
     min-height: 100vh;
+}
+
+/* Appsus Home  */
+
+.appsus-home {
+    text-align: center;
+    font-family: 'Tangerine-Regular', serif;
+    font-size: 60px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+.appsus-home div{
+    margin:0;
+}
+.appsus-home img {
+    margin-top: 50px;
+    height: 70vh;
+    margin:0;
 }
 
 .main-container {
@@ -103,15 +127,3 @@ nav a {
 
 .email-details {}
 
-/* Appsus Home  */
-
-.appsus-home {
-    text-align: center;
-    font-size: 28px;
-}
-
-.appsus-home img {
-    margin-top: 50px;
-    width: 300px;
-    height: 300px;
-}
