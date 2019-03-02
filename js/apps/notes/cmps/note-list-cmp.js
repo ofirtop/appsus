@@ -1,18 +1,18 @@
+import noteContainer from './note-container-cmp.js';
 
 export default {
+    name:'note-list',
+    props:['notes'],
     template: `
-        <section>
+        <section class="note-list">
             <ul>
-                <li v-for="note in notes" :key="note.id">
-                    <div>{{note.id}}</div>
-                    <div>type: {{note.type}}</div>
-                    <div>text: {{note.txt}}</div>
-                    <div>url: {{note.url}}</div>
-                    <div>txt list: {{note.txtList}}</div>
-                </li>
+                 <li v-for="note in notes" :key="note.id">
+                    <note-container :note="note"></note-container>
+                </li> 
             </ul>
         </section>
     `,
-    name:'note-list',
-    props:['notes']
+    components:{
+        noteContainer,
+    }
 }

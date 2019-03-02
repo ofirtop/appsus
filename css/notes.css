@@ -13,17 +13,6 @@
 .note-content{
     position: relative;
 }
-.note-container .note-content:before, .note-img1 .note-content:before{ /*this is the pin img*/
-    content: "";
-    width: 30px;
-    height: 30px;
-    display:inline-block;
-    background-image: url('../img/push-pin.svg');
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-}
 .note-container .buttons-container{
     opacity: 0;
     transition: opacity 0.3s;
@@ -37,6 +26,24 @@
     top: 0;
     z-index: 1;
 }
+.note-content .pin{
+    width: 30px;
+    height: 30px;
+    display:inline-block;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    background-image: url('../img/pin.svg');
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1;
+    outline: 0;
+}
+.note-content .pin.pinned{
+    background-image: url('../img/pin-pinned.svg');
+}
+
 .note-container:hover .note-editable, .note-container:hover .fa-map-pin:before{
     opacity: 1;
 }
