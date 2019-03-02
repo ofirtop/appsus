@@ -18,10 +18,10 @@
     <div id="app" class="app flex flex-col">
         <nav class="flex flex-reverse">
             <img class="main-app-box" src="img/box.png" @click="imgClicked" />
-            <div class="app-link-container">
-                    <router-link to="/" exact><img src="/img/home.png"/></router-link>
-                    <router-link to="/notes"><img src="/img/google_keep_icon.png"/></router-link>
-                    <router-link to="/emails"><img src="/img/email.png"/></router-link>
+            <div class="app-link-container" v-if="!selected" >
+                    <router-link to="/" exact><img src="/img/home.png" @click="imgClicked" /></router-link>
+                    <router-link to="/notes"><img src="/img/google_keep_icon.png" @click="imgClicked" /></router-link>
+                    <router-link to="/emails"><img src="/img/email.png" @click="imgClicked" /></router-link>
             </div>
         </nav>
 
