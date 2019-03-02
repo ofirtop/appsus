@@ -9,7 +9,7 @@ window.vueApp = new Vue({
     el: '#app',
     router: myRouter,
     data: {
-        selected: ''
+        selected: true
     },
     methods: {
         imgClicked() {
