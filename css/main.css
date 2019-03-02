@@ -32,6 +32,29 @@
     flex-grow: 1;
 }
 
+/*box image - main page*/
+
+.main-app-box {
+    width: 40px;
+    height: 40px;
+    margin-right:40px;
+    cursor: pointer;
+}
+.app-link-container img{
+    width:55px;
+    height:55px;
+}
+/* taking the container outside the upper orange strip*/
+.app-link-container{
+    width:250px;
+    height: 70px;
+    background-color:rgba(0, 0, 0, 0.2);
+    margin-bottom: -140px;
+    margin-top:30px;
+    margin-right:-10px;
+    border-radius: 4px;
+    border:1px solid #999;
+}
 footer {
     background-color: #999;
 }
@@ -42,7 +65,7 @@ nav {
 }
 
 nav a {
-    background-color: rgba(255, 0, 212, 0.75);
+    /* background-color: rgba(255, 0, 212, 0.75); */
     color: white;
     border-radius: 5px;
     padding: 5px;
@@ -138,16 +161,17 @@ nav a {
 
 .email-create .subject {
     display: inline-block;
-    margin-top:5px;
+    margin-top: 5px;
     background-color: rgba(0, 0, 0, 0.05);
     width: 100%;
 }
 
-.email-create textarea{
-    width:100%;
-    margin-top:5px;
-    height:60vh;
+.email-create textarea {
+    width: 100%;
+    margin-top: 5px;
+    height: 60vh;
 }
+
 /* EMAIL DETAILS  */
 
 .email-details {}

@@ -8,6 +8,12 @@ Vue.use(myRouter)
 window.vueApp = new Vue({
     el: '#app',
     router: myRouter,
+    methods:{
+        imgClicked(){
+
+            console.log('enter vue main app ...')
+        }
+    },
     components: {
         
         
