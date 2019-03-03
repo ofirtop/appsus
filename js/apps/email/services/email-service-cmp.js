@@ -1,4 +1,5 @@
 import utilService from '../../../services/util-service.js';
+import {eventBus,EVENT_EMAIL_DELETE, EVENT_EMAIL_ADD} from '../../../event-bus.js';
 
 export default {
     loadEmails,
@@ -6,6 +7,7 @@ export default {
     saveEmails,
     SendMail,
     getEmailById,
+    getTotalEmailcount,
     deleteEmail
 }
 
@@ -30,14 +32,18 @@ function loadEmails() {
     if(!isMailIntervalStart){
         isMailIntervalStart = !isMailIntervalStart;
         setInterval(() => {
-            var mail = _createEmail();
-            var joke = _getJoke();
-            mail.subject = joke.subject;
-            mail.body = joke.body;
-            SendMail(mail);
-        }, utilService.getRandomIntInclusive(20000,40000));
+            _AddEmail();
+        },20000 /*utilService.getRandomIntInclusive(20000,40000)*/);
     }
     return emails;
+}
+
+function _AddEmail(){
+    var mail = _createEmail();
+    var joke = _getJoke();
+    mail.subject = joke.subject;
+    mail.body = joke.body;
+    SendMail(mail);
 }
 
 function saveEmails() {
@@ -59,10 +65,7 @@ function _createEmail() {
     }
 }
 
-
-
 function getUnReadEmailsCounter() {
-
     var unReadCounter = 0;
     if (!emails || emails.length === 0) return 0;
 
@@ -76,20 +79,28 @@ function SendMail(email) {
     if (!email) return;
     if(!email.sendAt) email.sendAt = Date.now();
     if(!email.id) email.id = utilService.makeId(ID_LENGTH);
-        
+
     emails.push(email);
     utilService.saveToStorage(EMAIL_LIST_KEY, emails);
+    eventBus.$emit(EVENT_EMAIL_ADD);
     console.log('email added to emails. email:', email)
 }
+
 function deleteEmail(id) {
     if (id) {
         var idx = emails.findIndex(email => { return email.id === id });
         emails.splice(idx, 1);
         utilService.saveToStorage(EMAIL_LIST_KEY, emails);
     }
+    eventBus.$emit(EVENT_EMAIL_DELETE);
 }
+
 function getEmailById(id) {
     return emails.find(email => { return email.id === id });
+}
+
+function getTotalEmailcount(){
+    return emails.length;
 }
 
 var jokes = null;
@@ -115,15 +126,4 @@ function _getJoke() {
     }
     return jokes[utilService.getRandomIntInclusive(0, 14)]
 }
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,5 +1,5 @@
 import emailService from '../services/email-service-cmp.js';
-import { eventBus, EVENT_EMAIL_READ } from '../../../event-bus.js';
+import { eventBus, EVENT_EMAIL_READ, EVENT_EMAIL_DELETE } from '../../../event-bus.js';
 import utilService from '../../../services/util-service.js';
 
 export default {
@@ -55,6 +55,7 @@ export default {
             this.$router.push(strRout);
         },
         deleteEmail() {
+            // eventBus.$emit(EVENT_EMAIL_DELETE);
             emailService.deleteEmail(this.email.id);
             var strRout = `/emails`;
             this.$router.push(strRout);
