@@ -292,10 +292,10 @@ nav a {
         /* transform: translate(-100%);  */
         visibility: collapse;
     }
-    .email-app {
+    /* .email-app {
         display: flex;
         flex-direction: column;
-    }
+    } */
     /* .email-list{
         transform: translate(0,-8%); 
     } */
