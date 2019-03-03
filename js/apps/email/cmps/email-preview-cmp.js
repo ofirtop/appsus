@@ -38,11 +38,13 @@ export default {
     methods: {
         onSelected() {
             this.selected = !this.selected;
-            //if email read send event to the event bus
-            console.log('emiting read event to emailApp')
-            if (!this.email.isRead) setTimeout(() => { eventBus.$emit(EVENT_EMAIL_READ) }, 2000)
-            this.email.isRead = true;
-            this.$emit('mailread');
+
+            if (!this.email.isRead) setTimeout(() => {
+                this.email.isRead = true;
+                this.$emit('mailread');//to save to storage from the  list
+                eventBus.$emit(EVENT_EMAIL_READ)
+            }, 2000)
+
         },
         detailed() {
             var strRout = `emails/details/${this.email.id}`;

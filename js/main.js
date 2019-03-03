@@ -1,4 +1,4 @@
-import emailIndicator from './apps/email/cmps/email-indicator-cmp.js';
+import emailStatus from './apps/email/cmps/email-status-cmp.js';
 import emailService from './apps/email/services/email-service-cmp.js';
 import { eventBus, EVENT_EMAIL_READ,EVENT_EMAIL_DELETE,EVENT_EMAIL_ADD } from './event-bus.js'
 import myRoutes from './routes.js';
@@ -29,7 +29,8 @@ new Vue({
         emailService.loadEmails();
         this.channgeStatus();
         eventBus.$on(EVENT_EMAIL_READ, () => {
-            this.channgeStatus()
+            // this.channgeStatus()
+            this.status.unread = emailService.getUnReadEmailsCounter();
         });
         eventBus.$on(EVENT_EMAIL_DELETE, () => {
             this.channgeStatus()
@@ -39,7 +40,7 @@ new Vue({
         });
     },
     components: {
-        emailIndicator,
+        emailStatus,
         emailService
     }
 })
