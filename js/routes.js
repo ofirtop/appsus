@@ -11,8 +11,7 @@ const routes = [
             { path: 'compose', component: emailCompose }
         ]
     },
-    { path: '/notes/', component: noteApp },    
-    { path: '/notes/:noteId', component: noteApp },    
+    { path: '/notes/:noteId?', component: noteApp }  
 ]
 
 export default routes;
