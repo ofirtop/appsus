@@ -5,7 +5,9 @@ import emailFilter from '../cmps/email-filter-cmp.js';
 export default {
     template: `
             <section class="email-list">
-                <email-filter @filterChanged="setFilter" @sortChange="setSortChanged" @reverseChange="setReverse"></email-filter>
+                <email-filter @filterChanged="setFilter" 
+                              @sortChange="setSortChanged" 
+                              @reverseChange="setReverse"></email-filter>
                 <email-preview 
                     v-for="currEmail in emailToShow" 
                     :key="currEmail.id"
@@ -44,7 +46,7 @@ export default {
     },
     computed: {
         emailToShow() {
-            this.$emit('UnreadEmailsCounter', emailService.getUnReadEmailsCounter());
+            //this.$emit('UnreadEmailsCounter', emailService.getUnReadEmailsCounter());
 
             if (!this.emails) return this.email;
 
@@ -77,8 +79,8 @@ export default {
     created() {
         this.emails = emailService.loadEmails();
         console.log('email-list created emails:', this.emails);
-        var counter = emailService.getUnReadEmailsCounter();
-        this.$emit('UnreadEmailsCounter', counter);
+        //var counter = emailService.getUnReadEmailsCounter();
+        //this.$emit('UnreadEmailsCounter', counter);
     },
     components: {
         emailPreview,

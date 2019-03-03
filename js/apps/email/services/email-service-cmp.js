@@ -33,7 +33,7 @@ function loadEmails() {
         isMailIntervalStart = !isMailIntervalStart;
         setInterval(() => {
             _AddEmail();
-        },utilService.getRandomIntInclusive(40000,120000));
+        },/*utilService.getRandomIntInclusive(40000,120000)*/15000);
     }
     return emails;
 }
@@ -91,8 +91,9 @@ function deleteEmail(id) {
         var idx = emails.findIndex(email => { return email.id === id });
         emails.splice(idx, 1);
         utilService.saveToStorage(EMAIL_LIST_KEY, emails);
+        
+        eventBus.$emit(EVENT_EMAIL_DELETE);
     }
-    eventBus.$emit(EVENT_EMAIL_DELETE);
 }
 
 function getEmailById(id) {

@@ -18,7 +18,7 @@
     <div id="app" class="app flex flex-col">
         <nav class="flex flex-reverse">
             <img class="main-app-box" src="img/box.png" @click="imgClicked" />
-            <email-indicator :status="status"></email-indicator>
+            <email-status :status="status"></email-status>
             <div class="app-link-container flex align-center space-between" v-if="!selected">
                 <router-link to="/" exact><img src="/img/home.png" @click="imgClicked" /></router-link>
                 <router-link to="/notes"><img src="/img/google_keep_icon.png" @click="imgClicked" /></router-link>
