@@ -25,7 +25,7 @@
 .note-container .check{
     transform: translate(-50%, -50%);
     cursor: pointer;
-    /* opacity: 0; */
+    opacity: 0;
     transition: opacity 0.3s;
     position: absolute;
     top:0;
@@ -44,21 +44,21 @@
     cursor: pointer;
     z-index: 1;
     outline: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 .note-content .pin.pinned{
     background-image: url('../img/pin-pinned.svg');
 }
-
-.note-container:hover .note-editable, .note-container:hover .fa-map-pin:before{
+.note-container:hover .note-editable, 
+.note-container:hover .fa-map-pin:before,
+.note-container:hover .note-content .pin{
     opacity: 1;
 }
-.note-txt{}
-
 .note-container img{
     width:100%;
     border-radius: 10px;
 }
-.note-todo{}
 
 
 @media(min-width: 500px){

@@ -2,7 +2,6 @@ import noteService from "../services/note-service.js";
 
 export default {
     name: 'note-edit',
-    props:['note'],
     template: `
         <section class="note-edit">
             <div class="note-place-holder flex space-between" v-if="mode !== 'edit'" @click="selectType('txt')">
@@ -37,6 +36,7 @@ export default {
             mode: 'idle',
             placeHolder: '',
             noteType:'',
+            oldNote:null
         };
     },
     created() {
