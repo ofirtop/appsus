@@ -5,14 +5,23 @@ import utilService from '../../../services/util-service.js';
 export default {
     props: ['email'],
     template: `
-        <section class="email-preview">
+        <section class="email-preview" @mouseover="setHandlers(true)" @mouseleave="setHandlers(false)"><!-- @onmouseleave="setHandlers(false)"-->
             
-            <div class="flex space-between" :class="{bold: !email.isRead}" v-on:click="onSelected" v-if="!selected" >
+            <div class="email-item flex space-between" :class="{bold: !email.isRead}" v-on:click="onSelected" v-if="!selected" >
                 <div class=" flex">
                     <div>{{email.from}}</div>
                     <div class="email-subject">{{email.subject}}</div>
                 </div>
-                <div>{{timeRecieved}}</div>
+                <div class="flex">
+                    <div class="handlers" v-if="isShowHandlers" v-on:click.stop="">
+                        <i class="fa fa-expand" aria-hidden="true" title="details" v-on:click.stop="detailed"></i>
+                        <i class="fa fa-reply" aria-hidden="true" title="Reply" v-on:click.stop="reply"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true" title="delete" v-on:click.stop="deleteEmail"></i>
+                        <i class="fa fa-envelope-o" aria-hidden="true" v-if="email.isRead" v-on:click.stop="setReadState"></i>
+                        <i class="fa fa-envelope-open-o" aria-hidden="true" v-if="!email.isRead" v-on:click.stop="setReadState"></i>
+                    </div>
+                    <div>{{timeRecieved}}</div>
+                </div>
             </div>    
             <div v-else v-on:click="onSelected">
                 <div class="flex space-between">
@@ -21,21 +30,26 @@ export default {
                 </div>
                 <h4>{{email.from}}<span>{{email.fromEmail}}</span></h4>
                 <p>{{email.body}}</p>
+                <div class="handlers" >
+                        <i class="fa fa-expand" aria-hidden="true" title="details" v-on:click.stop="detailed"></i>
+                        <i class="fa fa-reply" aria-hidden="true" title="Reply" v-on:click.stop="reply"></i>
+                        <i class="fa fa-trash-o" aria-hidden="true" title="delete" v-on:click.stop="deleteEmail"></i>
+                    </div>
             </div>
-            <div class="handlers">
-                <button v-on:click="detailed">Deatails</button>
-                <button v-on:click="reply">Reply</button>
-                <button v-on:click="deleteEmail">Delete</button>
-                <button v-on:click="setReadState" >{{readState}}</button>
-            </div>
+            
         </section>
     `,
     data() {
         return {
-            selected: false
+            selected: false,
+            isShowHandlers: false
         }
     },
     methods: {
+        setHandlers(val) {
+            console.log('inside setHandlers')
+            this.isShowHandlers = val;
+        },
         onSelected() {
             this.selected = !this.selected;
 
@@ -71,10 +85,6 @@ export default {
     computed: {
         timeRecieved() {
             return utilService.formatTime(this.email.sendAt);
-        },
-        readState() {
-            if (this.email.isRead) return 'Mark as UnRead';
-            return 'Mark as Read';
         }
     },
     created() {

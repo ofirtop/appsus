@@ -83,7 +83,6 @@ function SendMail(email) {
     emails.push(email);
     utilService.saveToStorage(EMAIL_LIST_KEY, emails);
     eventBus.$emit(EVENT_EMAIL_ADD);
-    console.log('email added to emails. email:', email)
 }
 
 function deleteEmail(id) {

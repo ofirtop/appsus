@@ -17,7 +17,9 @@
 .flex-reverse {
     flex-direction: row-reverse;
 }
-
+.flex-grow1{
+    flex-grow:1;
+}
 /*BUTTONS*/
 .app-btn:hover{
     font-weight: bold;

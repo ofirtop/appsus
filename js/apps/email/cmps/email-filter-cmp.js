@@ -49,7 +49,7 @@ export default {
             } else if(sorter){
                 this.sortChange()
             } else if(reverse){this.reverseChanged()}
-
+            
         },
         filterChanged() {
             console.log('email-filter: filter changed, about to emit filterChanged event: ', this.filterBy);
