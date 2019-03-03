@@ -14,7 +14,7 @@ export default {
                 </div>
             </div>
             <!-- email-list and compose-email will be rendered here -->
-            <router-view @UnreadEmailsCounter="setUnreadEmailcounter"></router-view>
+            <router-view></router-view>
         </section> 
     `,
     data() {
@@ -26,10 +26,10 @@ export default {
     methods: {
         /*  Update Unread Email Counter
             this function is called one time, on the creation of the email list.  */
-        setUnreadEmailcounter(counter) {
-            console.log('counter received from email-list after email load. counter: ', counter)
-            this.unreadCounter = counter;
-        }
+        // setUnreadEmailcounter(counter) {
+        //     console.log('counter received from email-list after email load. counter: ', counter)
+        //     this.unreadCounter = counter;
+        // }
     },
     components: {
     },

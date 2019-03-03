@@ -95,6 +95,21 @@ nav a {
     margin-left: 20px;
 }
 
+/* EMAIL FILTER  */
+
+.email-filter{
+    margin: 20px;
+    /* border:1px solid black; */
+}
+.email-filter .filterByRead{
+    height:35px;
+    margin-top:5px;
+}
+.email-filter .sorter{
+    height:35px;
+    margin-top:5px;
+}
+
 /* EMAIL PREVIEW  */
 
 /*email container*/

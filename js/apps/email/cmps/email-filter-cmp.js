@@ -5,12 +5,12 @@ export default {
             <section class="email-filter">
                 Filter :<input type=text placeholder="filter by text" class="filter-text"
                        v-model="filterBy.text" v-on:keyup="filterChanged">
-                       <select v-model="filterBy.isRead" :value="filterBy.isRead" @change="filterChanged">
+                       <select class="filterByRead" v-model="filterBy.isRead" :value="filterBy.isRead" @change="filterChanged">
                             <option value="">All</option>
                             <option :value="true" >Read</option>
                             <option :value="false" >Unread</option>
                        </select>
-                       <select v-model="sorter" :value="sorter" @change="sortChange">
+                       <select class="sorter" v-model="sorter" :value="sorter" @change="sortChange">
                             <option value="date" >Sort By Date</option>
                             <option value="subject" >Sort By Subject</option>
                        </select>

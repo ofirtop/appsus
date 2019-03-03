@@ -46,8 +46,6 @@ export default {
     },
     computed: {
         emailToShow() {
-            //this.$emit('UnreadEmailsCounter', emailService.getUnReadEmailsCounter());
-
             if (!this.emails) return this.email;
 
             if (this.sorter === 'date') {
@@ -79,8 +77,6 @@ export default {
     created() {
         this.emails = emailService.loadEmails();
         console.log('email-list created emails:', this.emails);
-        //var counter = emailService.getUnReadEmailsCounter();
-        //this.$emit('UnreadEmailsCounter', counter);
     },
     components: {
         emailPreview,
