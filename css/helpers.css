@@ -30,3 +30,17 @@
 .text-right{
     text-align: right ;
 }
+
+/*MODAL*/
+.screen{
+    height: 100vh;
+    width: 100vw;
+    background-color: #bbb;
+    position: fixed;
+    top:0;
+    opacity:0.6;
+}
+
+.hidden{
+    opacity:0;
+}

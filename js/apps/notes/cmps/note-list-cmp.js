@@ -28,6 +28,8 @@ export default {
     },
     methods:{
         selectNote(note){
+            console.log('select note', note);
+
             this.$emit('selected', note);
         }
     },

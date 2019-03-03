@@ -1,4 +1,4 @@
-import noteService from "../services/note-service.js";
+import { eventBus, EVENT_TOGGLE_MODAL } from '../../../event-bus.js';
 
 export default {
     name: 'note-edit',
@@ -26,7 +26,7 @@ export default {
                 <input type="text" :placeholder="placeHolder" v-model="content" class="form-control" autofocus/>    
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-secondary">Save</button>
-                    <button type="button" @click="mode = 'idle'" class="btn btn-light">Close</button>
+                    <button type="button" @click="close" class="btn btn-light">Close</button>
                 </div>
             </form>
         </section>
@@ -50,6 +50,10 @@ export default {
         }
     },
     methods: {
+        close() {
+            this.mode = 'idle'
+            eventBus.$emit(EVENT_TOGGLE_MODAL, false);
+        },
         initEditNote() {
             console.log('initEditNote', this.note)
 
@@ -111,11 +115,13 @@ export default {
                     break;
             }
 
-            if (noteCopy.id) noteService.updateNote(noteCopy);
+            //            if (noteCopy.id) noteService.updateNote(noteCopy);
+            if (noteCopy.id) this.$emit('updated', noteCopy);
             else {
-                noteService.addNote(noteCopy);
+                this.$emit('added', noteCopy)
                 this.reset();
             }
+            eventBus.$emit(EVENT_TOGGLE_MODAL, false);
             this.$router.push('/notes');
         },
         reset() {

@@ -7,20 +7,17 @@ export default {
     name: 'note-container',
     props: ['note'],
     template: `
-                <section class="note-wrapper">
+                <section class="note-wrapper" @click="bla">
                     <div class="note-container">
                         <i class="fa fa-check-circle fa-2x check note-editable"></i>
                         <div class="note-content">
-                            <button class="pin" :class="{pinned: note.pinned}"  @click="note.pinned = !note.pinned"></button>
+                            <button class="pin" :class="{pinned: note.pinned}"  @click.stop="note.pinned = !note.pinned"></button>
                             <component :is="currCmp" :content="note.content"></component>
                         </div>
                         <div class="buttons-container note-editable">
-                            <button @click="deleteNote(note.id)" class="btn-note">
+                            <button @click.stop="deleteNote(note.id)" class="btn-note">
                                 <i class="app-btn fa fa-trash-o" ></i>
                             </button>
-                            <router-link :to="'/notes/' + note.id" class="btn-note">
-                                <i class="app-btn fa fa-pencil" ></i>
-                            </router-link>
                         </div>
 </div>
                 </section>        
@@ -40,6 +37,10 @@ export default {
         }
     },
     methods: {
+        bla(){
+            console.log('click on note wrapper', '');
+            
+        },
         deleteNote(noteId) {
             noteService.deleteNote(noteId)
                 .then(() => { });
@@ -47,7 +48,7 @@ export default {
         pinNote(noteId) {
             console.log('pinned', this.note);
 
-            // this.note.pinned = true;
+             this.note.pinned = true;
         }
     },
     components: {
