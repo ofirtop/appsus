@@ -3,7 +3,7 @@ export default {
     name: 'email-filter',
     template: `
             <section class="email-filter">
-                Filter :<input type=text placeholder="filter by text" class="filter-text"
+                <span>Filter :</span><input type=text placeholder="filter by text" class="filter-text"
                        v-model="filterBy.text" v-on:keyup="filterChanged">
                        <select class="filterByRead" v-model="filterBy.isRead" :value="filterBy.isRead" @change="filterChanged">
                             <option value="">All</option>
@@ -15,7 +15,7 @@ export default {
                             <option value="subject" >Sort By Subject</option>
                        </select>
                         <button type="button" v-on:click="reverseChanged">{{reverseState}}</button>
-                        <button type="button" v-on:click="clearFilter">Clear</Button>
+                        <button class="btn-clear" type="button" v-on:click="clearFilter">Clear</Button>
             </section>
     `,
     data() {

@@ -75,7 +75,6 @@ nav {
 }
 
 nav a {
-    /* background-color: rgba(255, 0, 212, 0.75); */
     color: white;
     border-radius: 5px;
     padding: 5px;
@@ -122,16 +121,17 @@ nav a {
 
 .email-filter {
     margin: 20px;
+    font-size: 14px;
     /* border:1px solid black; */
 }
 
 .email-filter .filterByRead {
-    height: 35px;
+    height: 28px;
     margin-top: 5px;
 }
 
 .email-filter .sorter {
-    height: 35px;
+    height: 28px;
     margin-top: 5px;
 }
 
@@ -169,6 +169,7 @@ nav a {
 /*email container*/
 
 .email-preview {
+    font-size: 12px;
     /* margin: 20px; */
     padding-bottom: 10px;
     cursor: pointer;
@@ -263,7 +264,7 @@ nav a {
 /* EMAIL INDICATOR  */
 
 .email-indicator {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     color: greenyellow;
     position: relative;
@@ -284,4 +285,26 @@ nav a {
     position: absolute;
     bottom: 2px;
     left: -8px;
+}
+
+@media (max-width:740px) {
+    .left-bar {
+        transform: translate(-100%); 
+    }
+    .email-app {
+        display: flex;
+        flex-direction: column;
+    }
+    .email-list{
+        transform: translate(0,-8%); 
+    }
+    .email-filter span{
+        visibility: collapse;
+    }
+    .email-filter .btn-clear{
+        visibility: collapse;
+    }
+}
+
+@media (max-width:550px) {
 }
