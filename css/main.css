@@ -301,6 +301,9 @@ nav a {
     .email-filter .btn-clear{
         visibility: collapse;
     }
+    .email-preview{
+        margin-top:15px;
+    }
 }
 
 @media (max-width:550px) {
