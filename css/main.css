@@ -67,8 +67,10 @@ footer {
 }
 
 nav {
-    margin-bottom: 25px;
+    margin-bottom: 0px;
     background-color: orange;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 nav a {
@@ -82,7 +84,22 @@ nav a {
 /* LEFT NAV     */
 
 .left-bar {
-    min-width: 150px;
+    min-width: 180px;
+    background-color: orange;
+}
+.left-bar > div > a{
+    color:white;
+    font-weight: bold;
+    padding:2px 15px;
+}
+.left-bar > div:hover{
+    background-color: bisque;
+    border-radius:0 30% 30% 0;
+}
+
+.left-bar > div > a:hover{
+    text-decoration: none;
+    color:green;
 }
 
 /* EMAIL LIST     */

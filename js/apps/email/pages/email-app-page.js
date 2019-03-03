@@ -5,7 +5,7 @@ export default {
     name: 'email-app',
     template: `
         <section class="email-app flex">
-            <div class="left-bar">
+            <div class="left-bar flex-col">
                 <div>
                     <router-link to="/emails/compose">Compose</router-link>
                 </div>
