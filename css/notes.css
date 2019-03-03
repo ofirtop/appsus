@@ -1,14 +1,19 @@
-.note-list{
-    column-count:3; 
+.note-list ul.pinned, .note-list ul.unpinned{
+    column-count:1; 
 }
-
-.note-container{
+.note-list ul.pinned{
+    margin-bottom: 10px;
+}
+.note-wrapper{
+    break-inside: avoid;/*for css columns*/
+    margin: 20px 0;
+}
+.note-wrapper{
     border: 1px solid #dadce0;
     border-radius: 10px;
-    width: 100%;
-    break-inside: avoid;/*for css columns*/
     margin-bottom: 20px;
     position: relative;
+    width: 100%;
 }
 .note-content{
     position: relative;
@@ -20,10 +25,10 @@
 .note-container .check{
     transform: translate(-50%, -50%);
     cursor: pointer;
-    opacity: 0;
+    /* opacity: 0; */
     transition: opacity 0.3s;
     position: absolute;
-    top: 0;
+    top:0;
     z-index: 1;
 }
 .note-content .pin{
@@ -54,3 +59,15 @@
     border-radius: 10px;
 }
 .note-todo{}
+
+
+@media(min-width: 500px){
+    .note-list ul.pinned, .note-list ul.unpinned{
+        column-count:2; 
+    }
+}
+@media(min-width: 680px){
+    .note-list ul.pinned, .note-list ul.unpinned{
+        column-count:3; 
+    }
+}

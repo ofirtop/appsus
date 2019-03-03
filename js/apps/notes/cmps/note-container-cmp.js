@@ -1,24 +1,24 @@
-import noteImg from './notes/note-img-cmp.js';
-import noteTxt from './notes/note-txt-cmp.js';
-import noteTodo from './notes/note-todo-cmp.js';
+import noteImg from './note-types/note-img-cmp.js';
+import noteTxt from './note-types/note-txt-cmp.js';
+import noteTodo from './note-types/note-todo-cmp.js';
 import noteService from '../services/note-service.js';
 
 export default {
     name: 'note-container',
     props: ['note'],
     template: `
-                <section class="note-container">
-                    <i class="fa fa-check-circle fa-2x check note-editable"></i>
-                    <div class="note-content">
-                        <button class="pin" :class="{pinned: note.pinned}"  @click="note.pinned = !note.pinned"></button>
-                        <component :is="currCmp" :content="note.content"></component>
-                    </div>
-                    <div class="buttons-container note-editable">
-                        <button @click="deleteNote(note.id)">Delete</button>
-                        <button>Y</button>
-                        <button>Z</button>
-                        <button>W</button>
-                    </div>
+                <section class="note-wrapper">
+                    <div class="note-container">
+                        <i class="fa fa-check-circle fa-2x check note-editable"></i>
+                        <div class="note-content">
+                            <button class="pin" :class="{pinned: note.pinned}"  @click="note.pinned = !note.pinned"></button>
+                            <component :is="currCmp" :content="note.content"></component>
+                        </div>
+                        <div class="buttons-container note-editable">
+                            <button @click="deleteNote(note.id)">Delete</button>
+                            <router-link :to="'/notes/' + note.id">Edit</router-link>
+                        </div>
+</div>
                 </section>        
             `,
     computed: {
@@ -38,12 +38,12 @@ export default {
     methods: {
         deleteNote(noteId) {
             noteService.deleteNote(noteId)
-                .then(()=>{});
+                .then(() => { });
         },
-        pinNote(noteId){
+        pinNote(noteId) {
             console.log('pinned', this.note);
-            
-           // this.note.pinned = true;
+
+            // this.note.pinned = true;
         }
     },
     components: {

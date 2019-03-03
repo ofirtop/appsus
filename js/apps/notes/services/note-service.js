@@ -2,7 +2,10 @@
 
 export default {
     getNotes,
-    deleteNote
+    deleteNote,
+    getNoteById,
+    updateNote,
+    addNote
 };
 
 let gNextId = 1;
@@ -50,4 +53,23 @@ function deleteNote(noteId){
 
     utilService.saveToStorage(STORAGE_KEY,  gNotes);
     return Promise.resolve();
+}
+
+function getNoteById(noteId){
+    return gNotes.find(note => note.id === noteId);
+}
+
+function updateNote(){
+    utilService.saveToStorage(STORAGE_KEY, gNotes);
+}
+
+function addNote(note){
+    let maxId = gNotes.reduce((acc, note) =>
+    {
+        acc = note.id > acc ?  note.id: acc;
+        return acc;
+    }, 0);
+    note.id = maxId;
+    gNotes.push(note);
+    utilService.saveToStorage(STORAGE_KEY, gNotes);
 }
