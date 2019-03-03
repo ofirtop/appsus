@@ -13,7 +13,7 @@ const routes = [
             { path: 'details/:id',component: emailDetails}
         ]
     },
-    { path: '/notes', component: noteApp },
+    { path: '/notes/:noteId?', component: noteApp }  
 ]
 
 export default routes;
