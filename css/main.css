@@ -296,6 +296,7 @@ nav a {
     }
     .email-filter input{
         margin-left:0;
+        width:120px;
     }
     .email-filter .btn-clear{
         visibility: collapse;
