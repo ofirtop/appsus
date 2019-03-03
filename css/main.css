@@ -87,20 +87,20 @@ nav a {
     min-width: 180px;
     background-color: orange;
 }
-.left-bar > div > a{
+
+.left-bar .menu-item{
     color:white;
     font-weight: bold;
     padding:2px 15px;
-}
-.left-bar > div:hover{
-    background-color: bisque;
-    border-radius:0 30% 30% 0;
+    display:block;
 }
 
-.left-bar > div > a:hover{
-    text-decoration: none;
+.left-bar .menu-item:hover{
+    background-color: bisque;
+    border-radius:0 30% 30% 0;
     color:green;
 }
+
 
 /* EMAIL LIST     */
 
