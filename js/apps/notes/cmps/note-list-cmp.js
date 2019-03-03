@@ -12,8 +12,8 @@ export default {
                 </li> 
             </ul> -->
             <ul class="unpinned">
-                <li v-for="note in notes" :key="note.id">
-                    <note-container :note="note"></note-container>
+                <li v-for="note in notes" :key="note.id" @click="selectNote(note)">
+                    <note-container :note="note" ></note-container>
                 </li> 
             </ul>
         </section>
@@ -24,6 +24,11 @@ export default {
         },
         unPinnedNotes(){
             return this.notes.filter(note => !note.pinned);
+        }
+    },
+    methods:{
+        selectNote(note){
+            this.$emit('selected', note);
         }
     },
     components:{

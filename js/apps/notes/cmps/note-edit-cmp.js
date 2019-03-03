@@ -2,7 +2,7 @@ import noteService from "../services/note-service.js";
 
 export default {
     name: 'note-edit',
-    props:['note'],
+    props: ['note'],
     template: `
         <section class="note-edit">
             <div class="note-place-holder flex space-between" v-if="mode !== 'edit'" @click="selectType('txt')">
@@ -36,74 +36,92 @@ export default {
             content: '',
             mode: 'idle',
             placeHolder: '',
-            noteType:'',
-            oldNote:null
+            noteType: ''
         };
     },
     created() {
-        // let noteId = +this.$route.params.noteId;
-        // if (noteId === 0) {
-        //     this.note = {};
-        //     return;
-        // }
-        // this.note = noteService.getNoteById(+noteId);
-        // console.log('note', this.note);
-        // switch (this.note.type) {
-        //     case 'img':
-        //         this.content = this.note.content.url;
-        //         break;
-        //     case 'txt':
-        //         this.content = this.note.content.txt;
-        //         break;
-        //     case 'todo':
-        //         this.content = this.note.content.todo.toString();
-        //         break;
-        // }
+        console.log('created', this.note)
+        if (this.note) this.initEditNote();
+    },
+    watch: {
+        note() {
+            console.log('watch', this.note)
+            if (this.note) this.initEditNote();
+        }
     },
     methods: {
-        selectType(noteType){
+        initEditNote() {
+            console.log('initEditNote', this.note)
 
-                this.noteType = noteType;
-                this.mode = 'edit'
+            this.mode = 'edit';
+            switch (this.note.type) {
+                case 'img':
+                    this.content = this.note.content.url;
+                    break;
+                case 'txt':
+                    this.content = this.note.content.txt;
+                    break;
+                case 'todo':
+                    this.content = this.note.content.todo.toString();
+                    break;
+            }
+        },
+        initAddNote() {
+            console.log('initAddNote', this.note)
 
-                switch (noteType) {
+            this.mode = 'idle';
+        },
+        selectType(noteType) {
+
+            this.noteType = noteType;
+            this.mode = 'edit'
+
+            switch (noteType) {
                 case 'img':
                     this.placeHolder = 'Add image url...';
                     break;
                 case 'txt':
-                this.placeHolder = 'Take a note...';
+                    this.placeHolder = 'Take a note...';
                     break;
                 case 'todo':
-                this.placeHolder = 'Add list seperated by commas';
+                    this.placeHolder = 'Add list seperated by commas';
                     break;
             }
             console.log('noteType', this.noteType);
             console.log('placeholder', this.placeHolder);
-            
-            
+
+
         },
         saveNote() {
 
             let noteCopy = this.note;
-            if(!noteCopy){
-                noteCopy = {type: this.noteType, id:0};
+            if (!noteCopy) {
+                noteCopy = { type: this.noteType, id: 0 };
             }
 
             switch (noteCopy.type) {
                 case 'img':
-                noteCopy.content = { url: this.content };
+                    noteCopy.content = { url: this.content };
                     break;
                 case 'txt':
-                noteCopy.content = { txt: this.content };
+                    noteCopy.content = { txt: this.content };
                     break;
                 case 'todo':
-                noteCopy.content = { todo: this.content.split(',') };
+                    noteCopy.content = { todo: this.content.split(',') };
                     break;
             }
 
             if (noteCopy.id) noteService.updateNote(noteCopy);
-            else noteService.addNote(noteCopy);
+            else {
+                noteService.addNote(noteCopy);
+                this.reset();
+            }
             this.$router.push('/notes');
+        },
+        reset() {
+            this.mode = 'idle';
+            this.content = '';
+            this.noteType = '';
         }
     }
 }
