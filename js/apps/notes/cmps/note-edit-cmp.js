@@ -1,5 +1,3 @@
-import noteService from "../services/note-service.js";
-
 export default {
     name: 'note-edit',
     props: ['note'],
@@ -111,9 +109,10 @@ export default {
                     break;
             }
 
-            if (noteCopy.id) noteService.updateNote(noteCopy);
+//            if (noteCopy.id) noteService.updateNote(noteCopy);
+            if (noteCopy.id) this.$emit('updated', noteCopy);
             else {
-                noteService.addNote(noteCopy);
+                this.$emit('added', noteCopy)
                 this.reset();
             }
             this.$router.push('/notes');

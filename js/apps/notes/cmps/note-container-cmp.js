@@ -18,9 +18,6 @@ export default {
                             <button @click="deleteNote(note.id)" class="btn-note">
                                 <i class="app-btn fa fa-trash-o" ></i>
                             </button>
-                            <router-link :to="'/notes/' + note.id" class="btn-note">
-                                <i class="app-btn fa fa-pencil" ></i>
-                            </router-link>
                         </div>
 </div>
                 </section>        

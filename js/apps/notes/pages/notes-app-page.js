@@ -6,9 +6,9 @@ export default {
     template: `
         <section class="notes-app">
             <h1>Notes</h1>
-            <note-edit></note-edit>
-            <note-list :notes="notes" @selected="editNote"></note-list>
-            <note-edit :note="currNote"></note-edit>
+            <note-edit @added="addNote" ></note-edit>
+            <note-list :notes="notes" @selected="selectNote"></note-list>
+            <note-edit @edit="editNote" :note="currNote"></note-edit>
         </section> 
     `,
     data(){
@@ -19,10 +19,20 @@ export default {
     },
     name:'notes-app',
     methods:{
-        editNote(note){
+        selectNote(note){
             console.log('editing note', note);
             this.currNote = note;
             this.$router.push('/notes/' + note.id);
+        },
+        addNote(note){
+            noteService.addNote(note);
+            this.notes = noteService.getNotes();
+        },
+        editNote(note){
+            console.log('editNote', note);
+            
+            noteService.updateNote(note);
+            this.notes = noteService.getNotes();
         }
     },
     created(){
