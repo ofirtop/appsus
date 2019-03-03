@@ -5,14 +5,25 @@
 .flex-col {
     flex-direction: column;
 }
-.space-between{
+.space-between {
     justify-content: space-between;
 }
+.justify-center {
+    justify-content: center;
+}
+.align-center {
+    align-items: center;
+}
+.flex-reverse {
+    flex-direction: row-reverse;
+}
+
 /*BUTTONS*/
 .app-btn:hover{
     font-weight: bold;
     cursor: pointer;
 }
+
 /*TEXT*/
 .text-right{
     text-align: right ;

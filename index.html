@@ -19,11 +19,14 @@
 
 <body>
     <div id="app" class="app flex flex-col">
-
-        <nav>
-            <router-link to="/" exact>Home</router-link>
-            <router-link to="/notes">Miss Keep</router-link>
-            <router-link to="/emails">Mister Email</router-link>
+        <nav class="flex flex-reverse">
+            <img class="main-app-box" src="img/box.png" @click="imgClicked" />
+            <email-indicator :status="status"></email-indicator>
+            <div class="app-link-container flex align-center space-between" v-if="!selected">
+                <router-link to="/" exact><img src="/img/home.png" @click="imgClicked" /></router-link>
+                <router-link to="/notes"><img src="/img/google_keep_icon.png" @click="imgClicked" /></router-link>
+                <router-link to="/emails"><img src="/img/email.png" @click="imgClicked" /></router-link>
+            </div>
         </nav>
 
         <div class="main-container">
@@ -33,6 +36,7 @@
         <footer>
             Powered by Hagar & Ofir &copy; 2019
         </footer>
+
     </div>
 
     <script src="lib/jquery/jquery.js"></script>

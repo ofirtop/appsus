@@ -1,4 +1,4 @@
-import emailList from '../cmps/email-list-cmp.js'
+import { eventBus, EVENT_EMAIL_READ } from '../../../event-bus.js';
 import emailService from '../services/email-service-cmp.js';
 
 export default {
@@ -9,28 +9,36 @@ export default {
                     <router-link to="/emails/compose">Compose</router-link>
                 </div>
                 <div>
-                    <router-link to="/emails">Inbox</router-link>
+                    <router-link to="/emails">Inbox ({{emailReadCounter}})</router-link>
                 </div>
             </div>
             <!-- email-list and compose-email will be rendered here -->
-            <router-view :emails="emails"></router-view>
+            <router-view @UnreadEmailsCounter="setUnreadEmailcounter"></router-view>
         </section> 
     `,
-    data(){
-        return{
-            emails:null
+    data() {
+        return {
+            emails: null,
+            emailReadCounter: 0
         }
     },
-    components:{
-        emailList,
-        emailService
+    methods: {
+    /*  Update Unread Email Counter
+        this function is called one time, on the creation of the email list.  */
+        setUnreadEmailcounter(counter) {
+            console.log('counter received from email-list after email load. counter: ',counter)
+            this.emailReadCounter = counter;
+        }
     },
-    created(){
-        this.emails = emailService.loadEmails();
-        // this.$router.push('/emails/inbox');
-        console.log('email app got emails: ',this.emails);
-        
-        
+    components: {
     },
-    name:'email-app'
+    created() {
+        console.log('email app got emails: ', this.emails);
+        //register to read email notification
+        eventBus.$on(EVENT_EMAIL_READ, () => {
+            this.emailReadCounter = emailService.getUnReadEmailsCounter();
+        });
+
+    },
+    name: 'email-app'
 }

@@ -3,8 +3,9 @@
 
 export default {
     template: `
-        <section class="appsus-home">
-            
+        <section class="appsus-home flex-col">
+            <div>Welcome to the Appsus playground !</div>
+            <img src="../../img/unicorn.png">
         </section> 
     `,
     data() {

@@ -1,10 +1,13 @@
+import emailService from '../services/email-service-cmp.js';
+import { eventBus, EVENT_EMAIL_READ, EVENT_EMAIL_DELETE } from '../../../event-bus.js';
+import utilService from '../../../services/util-service.js';
 
 export default {
     props: ['email'],
     template: `
         <section class="email-preview">
             
-            <div class="flex space-between" v-on:click="onSelected" v-if="!selected" >
+            <div class="flex space-between" :class="{bold: !email.isRead}" v-on:click="onSelected" v-if="!selected" >
                 <div class=" flex">
                     <div>{{email.from}}</div>
                     <div class="email-subject">{{email.subject}}</div>
@@ -19,32 +22,61 @@ export default {
                 <h4>{{email.from}}<span>{{email.fromEmail}}</span></h4>
                 <p>{{email.body}}</p>
             </div>
+            <div class="handlers">
+                <button v-on:click="detailed">Deatails</button>
+                <button v-on:click="reply">Reply</button>
+                <button v-on:click="deleteEmail">Delete</button>
+                <button v-on:click="setReadState" >{{readState}}</button>
+            </div>
         </section>
     `,
-    data(){
-        return{
-            selected:false
+    data() {
+        return {
+            selected: false
         }
     },
     methods: {
-        pad(n) {
-            return n < 10 ? '0' + n : n;
-        },
-        onSelected(){
+        onSelected() {
             this.selected = !this.selected;
+            //if email read send event to the event bus
+            console.log('emiting read event to emailApp')
+            if (!this.email.isRead) setTimeout(() => { eventBus.$emit(EVENT_EMAIL_READ) }, 2000)
+            this.email.isRead = true;
+            this.$emit('mailread');
+        },
+        detailed() {
+            var strRout = `emails/details/${this.email.id}`;
+            console.log('about to move to detailed view', strRout);
+            this.$router.push(strRout);
+        },
+        reply() {
+            var strRout = `/emails/compose/${this.email.id}`;
+            console.log('about to move to detailed view', strRout);
+            this.$router.push(strRout);
+        },
+        deleteEmail() {
+            // eventBus.$emit(EVENT_EMAIL_DELETE);
+            emailService.deleteEmail(this.email.id);
+            var strRout = `/emails`;
+            this.$router.push(strRout);
+        },
+        setReadState() {
+            this.email.isRead = !this.email.isRead;
+            eventBus.$emit(EVENT_EMAIL_READ);
+            emailService.saveEmails();
         }
     },
     computed: {
         timeRecieved() {
-            // debugger
-            var h = new Date(this.email.sendAt).getHours();
-            h += 2; //offset
-            var m = new Date(this.email.sendAt).getMinutes();
-            return this.pad(h) + ':' + this.pad(m);
+            return utilService.formatTime(this.email.sendAt);
+        },
+        readState() {
+            if (this.email.isRead) return 'Mark as UnRead';
+            return 'Mark as Read';
         }
     },
-    created(){
-      console.log('email preview created')  
+    created() {
+        console.log('email preview created')
     },
     name: 'email-preview'
 }

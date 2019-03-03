@@ -1,9 +1,65 @@
+@font-face {
+    font-family: "Tangerine-Regular";
+    src: url("/fonts/Tangerine/Tangerine-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 .app {
     min-height: 100vh;
 }
 
+/* Appsus Home  */
+
+.appsus-home {
+    text-align: center;
+    font-family: 'Tangerine-Regular', serif;
+    font-size: 60px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.appsus-home div {
+    margin: 0;
+}
+
+.appsus-home img {
+    margin-top: 50px;
+    height: 70vh;
+    margin: 0;
+}
+
 .main-container {
     flex-grow: 1;
+}
+
+/*box image - main page*/
+
+.main-app-box {
+    width: 40px;
+    height: 40px;
+    margin-top:5px;
+    margin-right: 40px;
+    margin-left:40px;
+    cursor: pointer;
+}
+
+.app-link-container img {
+    width: 45px;
+    height: 45px;
+}
+
+/* taking the container outside the upper orange strip*/
+
+.app-link-container {
+    width: 250px;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: -140px;
+    margin-top: 42px;
+    margin-right: -124px;
+    border-radius: 4px;
+    border: 1px solid #999;
+    z-index:1;
 }
 
 footer {
@@ -11,11 +67,12 @@ footer {
 }
 
 nav {
-    margin-bottom: 5px;
+    margin-bottom: 25px;
+    background-color: orange;
 }
 
 nav a {
-    background-color: rgba(255, 0, 212, 0.75);
+    /* background-color: rgba(255, 0, 212, 0.75); */
     color: white;
     border-radius: 5px;
     padding: 5px;
@@ -34,6 +91,10 @@ nav a {
     flex-grow: 1;
 }
 
+.filter-text {
+    margin-left: 20px;
+}
+
 /* EMAIL PREVIEW  */
 
 /*email container*/
@@ -45,15 +106,21 @@ nav a {
     border-bottom: 1px solid gray;
 }
 
+.email-preview .bold {
+    font-weight: bold;
+}
+
 /*subject*/
 
 .email-preview h3 {
     font-size: 18px;
     margin: 0;
 }
-.email-subject{
-    margin-left:25px;
+
+.email-subject {
+    margin-left: 25px;
 }
+
 /*sender name*/
 
 .email-preview h4 {
@@ -75,4 +142,68 @@ nav a {
 .email-preview p {
     font-size: 12px;
     margin-left: 15px;
+}
+
+/* EMAIL CREATE  */
+
+.email-create {
+    flex-grow: 1
+}
+
+.email-create-header {
+    background-color: gray;
+    color: white;
+}
+
+.email-to {
+    margin-top: 5px;
+}
+
+.email-to input {
+    flex-grow: 1;
+    border: 0px solid transparent;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-left: 15px;
+}
+
+.email-create .subject {
+    display: inline-block;
+    margin-top: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.email-create textarea {
+    width: 100%;
+    margin-top: 5px;
+    height: 60vh;
+}
+
+/* EMAIL DETAILS  */
+
+/* EMAIL INDICATOR  */
+
+.email-indicator {
+    font-size: 22px;
+    font-weight: bold;
+    color: greenyellow;
+    position:relative;
+    border:1px solid black;
+    border-radius:50%;
+    padding: 6px 15px;
+    
+    background-color: darkolivegreen;
+}
+
+.email-indicator .emails-read {
+    font-size: 12px;
+    color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 20px;
+    padding:0px 5px 0px 5px;
+    background-color:red;
+    position:absolute;
+    bottom: 2px;
+    left: -8px;
 }
