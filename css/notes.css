@@ -1,5 +1,11 @@
+.notes-app{
+    max-width: 1000px;
+    margin: auto;
+}
+
 .note-list ul.pinned, .note-list ul.unpinned{
     column-count:1; 
+    max-width: 95%;
 }
 .note-list ul.pinned{
     margin-bottom: 10px;
@@ -104,4 +110,12 @@
 .btn-note:hover{
     font-weight: bold;
     color: black;
+}
+
+.modal-content{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
 }
