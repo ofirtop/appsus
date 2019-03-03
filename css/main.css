@@ -290,15 +290,15 @@ nav a {
 @media (max-width:740px) {
     .left-bar {
         /* transform: translate(-100%);  */
-        visibility: collapse;
+        display:none;
     }
-    /* .email-app {
+    .email-app {
         display: flex;
-        flex-direction: column;
-    } */
-    /* .email-list{
-        transform: translate(0,-8%); 
-    } */
+        /* flex-direction: column; */
+    }
+    .email-list{
+        /* transform: translate(-180px,0);  */
+    }
     .email-filter span{
         visibility: collapse;
     }
