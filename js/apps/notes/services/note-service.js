@@ -59,7 +59,8 @@ function getNoteById(noteId){
     return gNotes.find(note => note.id === noteId);
 }
 
-function updateNote(){
+function updateNote(note){
+    //note already modified in memory. only save to storage
     utilService.saveToStorage(STORAGE_KEY, gNotes);
 }
 
@@ -69,7 +70,7 @@ function addNote(note){
         acc = note.id > acc ?  note.id: acc;
         return acc;
     }, 0);
-    note.id = maxId;
+    note.id = ++maxId;
     gNotes.push(note);
     utilService.saveToStorage(STORAGE_KEY, gNotes);
 }

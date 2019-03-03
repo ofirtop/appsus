@@ -15,8 +15,12 @@ export default {
                             <component :is="currCmp" :content="note.content"></component>
                         </div>
                         <div class="buttons-container note-editable">
-                            <button @click="deleteNote(note.id)">Delete</button>
-                            <router-link :to="'/notes/' + note.id">Edit</router-link>
+                            <button @click="deleteNote(note.id)">
+                                <i class="app-btn fa fa-trash-o" ></i>
+                            </button>
+                            <router-link :to="'/notes/' + note.id">
+                                <i class="app-btn fa fa-pencil" ></i>
+                            </router-link>
                         </div>
 </div>
                 </section>        
