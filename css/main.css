@@ -289,18 +289,13 @@ nav a {
 
 @media (max-width:740px) {
     .left-bar {
-        /* transform: translate(-100%);  */
         display:none;
     }
-    .email-app {
-        display: flex;
-        /* flex-direction: column; */
-    }
-    .email-list{
-        /* transform: translate(-180px,0);  */
-    }
     .email-filter span{
-        visibility: collapse;
+        display:none;
+    }
+    .email-filter input{
+        margin-left:0;
     }
     .email-filter .btn-clear{
         visibility: collapse;
