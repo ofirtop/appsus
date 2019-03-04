@@ -1,6 +1,6 @@
 import utilService from '../../../services/util-service.js';
 import {eventBus,EVENT_EMAIL_DELETE, EVENT_EMAIL_ADD} from '../../../event-bus.js';
-
+// import noteService from '../../notes/services/note-service.js';
 export default {
     loadEmails,
     getUnReadEmailsCounter,
@@ -8,7 +8,8 @@ export default {
     SendMail,
     getEmailById,
     getTotalEmailcount,
-    deleteEmail
+    deleteEmail//,
+    // moveToNotes
 }
 
 const EMAIL_LIST_KEY = 'emailList';
@@ -94,6 +95,10 @@ function deleteEmail(id) {
         eventBus.$emit(EVENT_EMAIL_DELETE);
     }
 }
+
+// function moveEmailToNotes(email){
+//     noteService.addNote(email;)
+// }
 
 function getEmailById(id) {
     return emails.find(email => { return email.id === id });
