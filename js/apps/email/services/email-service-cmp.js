@@ -34,7 +34,7 @@ function loadEmails() {
         isMailIntervalStart = !isMailIntervalStart;
         setInterval(() => {
             _AddEmail();
-        },utilService.getRandomIntInclusive(40000,120000));
+        },utilService.getRandomIntInclusive(5000,15000));
     }
     return emails;
 }
